@@ -1,0 +1,67 @@
+{
+  "hash": "f460c70c",
+  "configHash": "8467389d",
+  "lockfileHash": "d31a7ec4",
+  "browserHash": "6395f289",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "d90a8641",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "467c009c",
+      "needsInterop": true
+    },
+    "@remixicon/react": {
+      "src": "../../node_modules/@remixicon/react/index.mjs",
+      "file": "@remixicon_react.js",
+      "fileHash": "973f3ce3",
+      "needsInterop": false
+    },
+    "react-icons/fa": {
+      "src": "../../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "a134ff6c",
+      "needsInterop": false
+    },
+    "react-icons/md": {
+      "src": "../../../node_modules/react-icons/md/index.mjs",
+      "file": "react-icons_md.js",
+      "fileHash": "be0aba51",
+      "needsInterop": false
+    },
+    "react-icons/si": {
+      "src": "../../../node_modules/react-icons/si/index.mjs",
+      "file": "react-icons_si.js",
+      "fileHash": "f11b6bb7",
+      "needsInterop": false
+    },
+    "emailjs-com": {
+      "src": "../../../node_modules/emailjs-com/es/index.js",
+      "file": "emailjs-com.js",
+      "fileHash": "12a1686f",
+      "needsInterop": false
+    },
+    "react-icons/io5": {
+      "src": "../../../node_modules/react-icons/io5/index.mjs",
+      "file": "react-icons_io5.js",
+      "fileHash": "b088f583",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-WNPTCGAH": {
+      "file": "chunk-WNPTCGAH.js"
+    },
+    "chunk-W27O2NTW": {
+      "file": "chunk-W27O2NTW.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}
