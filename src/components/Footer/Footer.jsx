@@ -4,7 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-[#465697] text-white p-8 md:p-12">
+    <div id="Footer" className="flex flex-col justify-center items-center bg-[#465697] text-white p-8 md:p-12">
       {/* Social Icons Section */}
       <div className="flex gap-6 justify-center mb-4">
         <a
