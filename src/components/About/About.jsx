@@ -1,5 +1,5 @@
 import React from "react";
-import AboutImg from "../../assets/7358653-removebg-preview.png";
+import AboutImg from "../../assets/mine2.jpeg";
 import { IoArrowForward } from "react-icons/io5";
 
 const About = () => {
@@ -16,7 +16,7 @@ const About = () => {
           <img
             src={AboutImg}
             alt="About Me"
-            className="rounded-full shadow-md w-60 md:w-80"
+            className=" shadow-md w-68 md:w-96 h-100 mb-28 mr-24"
           />
         </div>
 

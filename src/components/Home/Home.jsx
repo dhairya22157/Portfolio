@@ -1,5 +1,5 @@
 import React from "react";
-import avatarImg from "../../assets/7358602-removebg-preview.png";
+import avatarImg from "../../assets/mine.jpeg";
 import TextChange from "../TextChange";
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
         </a> */}
       </div>
       <div>
-        <img className="" src={avatarImg} alt="" />
+        <img className="h-80 w-80 md:h-96 md:w-96 object-cover rounded-lg mr-20 mt-24" src={avatarImg} alt="" />
       </div>
     </div>
   );

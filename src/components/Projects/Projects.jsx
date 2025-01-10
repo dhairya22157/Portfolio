@@ -46,7 +46,7 @@ const Projects = () => {
         <ProjectCard
           title="ShellCraft - Linux Command Shell Simulator"
           main="As part of the Operating Systems course, I developed a custom Linux shell designed to execute fundamental and basic Linux commands. This project aimed to provide a foundational understanding of shell operations and command-line interfaces. Key features of the project include: Implementation of a custom shell that mimics the behavior of a standard Linux shell, allowing users to execute basic commands seamlessly. Creation of a beginner-friendly environment to help users familiarize themselves with essential command-line operations. Support for core Linux commands, making the shell functional and practical for learning and exploration. This project highlights foundational concepts of operating systems, process management, and user interaction within a command-line interface."
-          repoLink="https://github.com/yourusername/shellcraft-linux-shell-simulator"
+          repoLink="https://github.com/dhairya22157/ShellCraft"
           image={shellCraftImage}
         />
       </div>
