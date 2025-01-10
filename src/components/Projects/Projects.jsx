@@ -40,7 +40,7 @@ const Projects = () => {
         <ProjectCard
           title="Artificial Machine simulator"
           main="For a course project on Computer Organization, I developed a simulator using C and compilers, focusing on the fundamental operations of computer systems. The simulator, designed to run on a Linux distribution command line, bridges the gap between user commands and machine-level instructions. Key features of the project include: A simulator that translates user commands into machine code, enabling the computer system to process and execute the instructions effectively. An inbuilt assembler that converts the system's machine-level response back into a user-readable output, ensuring clear communication between the system and the user. This project showcases expertise in systems programming, compiler design, and low-level architecture, with a strong emphasis on practical applications in computer organization."
-          repoLink="https://github.com/yourusername/artificial-machine-simulator"
+          repoLink="https://github.com/dhairya22157/Assembler-and-Simulator"
           image={machineSimulatorImage}
         />
         <ProjectCard
