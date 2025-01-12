@@ -1,7 +1,8 @@
 import React from "react";
-import AboutImg from "../../assets/mine2.jpeg";
+import AboutImg from "../../assets/mine4.jpg";
+import UnicornImg from "../../assets/unicorn.jpeg";
 import { IoArrowForward } from "react-icons/io5";
-
+import "./About.css";
 const About = () => {
   return (
     <div
@@ -14,7 +15,7 @@ const About = () => {
         {/* Left Section - Image */}
         <div className="flex-shrink-0">
           <img
-            src={AboutImg}
+            src={UnicornImg}
             alt="About Me"
             className=" shadow-md w-68 md:w-96 h-100 mb-28 mr-24"
           />

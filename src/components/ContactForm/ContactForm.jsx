@@ -23,18 +23,24 @@ const ContactForm = () => {
     setError("");
     emailjs
       .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        process.env.REACT_APP_EMAILJS_USER_ID
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
-        () => {
+        (response) => {
+          console.log("EmailJS Success:", response.status,response.text);
           setSubmitted(true);
           setFormData({ name: "", email: "", message: "" });
           setLoading(false);
         },
-        () => {
+        (error) => {
+          console.error("EmailJS Error:", error);
+          console.log("Service ID:", process.env.REACT_APP_EMAILJS_SERVICE_ID);
+console.log("Template ID:", process.env.REACT_APP_EMAILJS_TEMPLATE_ID);
+console.log("User ID:", process.env.REACT_APP_EMAILJS_USER_ID);
+
           setError("Failed to send message. Please try again later.");
           setLoading(false);
         }
@@ -98,10 +104,11 @@ const ContactForm = () => {
               )}
               <button
                 type="submit"
-                className={`bg-[#f07167] text-white rounded-lg p-3 font-semibold hover:bg-[#d96050] transition ${
+                className={`bg-[#f07167] text-white rounded-lg p-3 font-semibold hover:bg-[#d96050] transition  ${
                   loading ? "cursor-wait" : ""
                 }`}
                 disabled={loading}
+                style={{ width: "100px", height: "50px" }}
               >
                 {loading ? (
                   <div className="loader border-t-transparent mx-auto"></div>
