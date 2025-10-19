@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -21,27 +21,83 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    // Get environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Debug logging (values are logged but not exposed in UI)
+    console.log("📧 EmailJS Configuration Check:");
+    console.log("Service ID exists:", !!serviceId);
+    console.log("Template ID exists:", !!templateId);
+    console.log("Public Key exists:", !!publicKey);
+    console.log("Service ID:", serviceId ? `${serviceId.substring(0, 10)}...` : "MISSING");
+    console.log("Template ID:", templateId ? `${templateId.substring(0, 10)}...` : "MISSING");
+    console.log("Public Key:", publicKey ? `${publicKey.substring(0, 5)}...` : "MISSING");
+
+    // Validate environment variables
+    if (!serviceId || !templateId || !publicKey) {
+      const missingVars = [];
+      if (!serviceId) missingVars.push("VITE_EMAILJS_SERVICE_ID");
+      if (!templateId) missingVars.push("VITE_EMAILJS_TEMPLATE_ID");
+      if (!publicKey) missingVars.push("VITE_EMAILJS_PUBLIC_KEY");
+      
+      const errorMsg = `⚠️ EmailJS configuration error: Missing environment variables: ${missingVars.join(", ")}. Please check your .env file.`;
+      console.error(errorMsg);
+      setError("Configuration error. Please contact the site administrator.");
+      setLoading(false);
+      return;
+    }
+
+    // Make sure these keys match your EmailJS template variables
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_name: "Dhairya", // Optional: recipient name
+    };
+
+    console.log("📤 Sending email with template params:", {
+      from_name: templateParams.from_name,
+      from_email: templateParams.from_email,
+      message_length: templateParams.message.length,
+    });
+
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        import.meta.env.VITE_EMAILJS_USER_ID
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
       )
       .then(
         (response) => {
-          console.log("EmailJS Success:", response.status,response.text);
+          console.log("✅ Email sent successfully!", response.status, response.text);
           setSubmitted(true);
           setFormData({ name: "", email: "", message: "" });
           setLoading(false);
         },
         (error) => {
-          console.error("EmailJS Error:", error);
-          console.log("Service ID:", process.env.REACT_APP_EMAILJS_SERVICE_ID);
-console.log("Template ID:", process.env.REACT_APP_EMAILJS_TEMPLATE_ID);
-console.log("User ID:", process.env.REACT_APP_EMAILJS_USER_ID);
-
-          setError("Failed to send message. Please try again later.");
+          console.error("❌ EmailJS Error Details:");
+          console.error("Error object:", error);
+          console.error("Error status:", error?.status);
+          console.error("Error text:", error?.text);
+          console.error("Error message:", error?.message);
+          
+          // Provide more specific error messages
+          let userMessage = "Failed to send message. ";
+          if (error?.status === 400) {
+            userMessage += "Invalid request. Please check your input.";
+          } else if (error?.status === 401 || error?.status === 403) {
+            userMessage += "Authentication error. Please contact the site administrator.";
+          } else if (error?.status === 404) {
+            userMessage += "Service not found. Please contact the site administrator.";
+          } else {
+            userMessage += "Please try again later or email me directly.";
+          }
+          
+          setError(userMessage);
           setLoading(false);
         }
       );
@@ -111,7 +167,7 @@ console.log("User ID:", process.env.REACT_APP_EMAILJS_USER_ID);
                 style={{ width: "100px", height: "50px" }}
               >
                 {loading ? (
-                  <div className="loader border-t-transparent mx-auto"></div>
+                  <span className="animate-spin">⏳</span>
                 ) : (
                   "Send message"
                 )}

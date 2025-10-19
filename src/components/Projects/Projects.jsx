@@ -1,55 +1,161 @@
 import React from "react";
-import ProjectCard from "./ProjectCard";
-import songImage from "../../assets/song-popularity.avif";
-import movieImage from "../../assets/movie-recommender.png";
-import stickHeroImage from "../../assets/stick-hero.png"; 
-import onlineStoreImage from "../../assets/online-store.jpg";
-import machineSimulatorImage from "../../assets/machine-simulator.webp";
-import shellCraftImage from "../../assets/shell-craft.webp";
+
+// NOTE: Placeholder URLs are used below because the original local image paths (e.g., "../../assets/song-popularity.avif")
+// cannot be resolved in this environment. Replace these with actual image URLs if available.
+const IMAGE_PLACEHOLDER_URL = "https://placehold.co/400x200/465697/ffffff?text=";
+
+// Data structure for the project details
+const projectData = [
+    {
+        title: "Song Popularity Predictor (HitTrack)",
+        main: "Developed a machine learning model to predict song popularity using features from Spotify's API, achieving 78% classification accuracy.",
+        repoLink: "https://github.com/dhairya22157/Song_Popularity",
+        image: IMAGE_PLACEHOLDER_URL + "HitTrack",
+        demoLink: null,
+    },
+    {
+        title: "Movie Recommender System",
+        main: "Built a personalized Movie Recommender System using Machine Learning and Flask, integrating the TMDB API for high-quality, relevant movie images and suggestions.",
+        demoLink: "https://movie-recommender-8aae.onrender.com/",
+        repoLink: "https://github.com/dhairya22157/movie-recommender",
+        image: IMAGE_PLACEHOLDER_URL + "Movie+Recommender",
+    },
+    {
+        title: "YouTube Sentiment Analysis Chrome Extension",
+        main: "Created a Chrome extension using NLP and Flask for automated sentiment analysis of YouTube comments, boosting analysis efficiency by over 50%.",
+        repoLink: "Link", // Replace "Link" with actual Repo Link
+        image: IMAGE_PLACEHOLDER_URL + "YT+Sentiment+Analysis",
+        demoLink: null, // Replace null with Demo Link if available
+    },
+    {
+        title: "Efficient Summarization of Healthcare Response",
+        main: "Developed a medical Q&A summarization system using PyTorch and SOTA Transformer models (Hugging Face), achieving a BERTScore F1 of 0.8907.",
+        repoLink: "Link", // Replace "Link" with actual Repo Link
+        image: IMAGE_PLACEHOLDER_URL + "Healthcare+Summarization",
+        demoLink: null, // Replace null with Demo Link if available
+    },
+    {
+        title: "Amazon Co-Purchase Network Analysis",
+        main: "Analyzed Amazon's 310K-product network using Graph Theory (NetworkX) and ML for link prediction, achieving an AUC of 0.7935 in forecasting co-purchases.",
+        repoLink: "Link", // Replace "Link" with actual Repo Link
+        image: IMAGE_PLACEHOLDER_URL + "Amazon+Network",
+        demoLink: null, // Replace null with Demo Link if available
+    },
+    {
+        title: "Stick Hero Game (JavaFX)",
+        main: "A single-player game developed in Java and JavaFX, featuring a custom-built 2D physics engine based on robust Object-Oriented Programming (OOP) principles.",
+        repoLink: "https://github.com/dhairya22157/Javafx-game",
+        image: IMAGE_PLACEHOLDER_URL + "Stick+Hero",
+        demoLink: null,
+    },
+    {
+        title: "Online Store (Full Stack)",
+        main: "Developed a feature-rich e-commerce website using React, Django, and a MySQL-based DBMS, emphasizing OLAP queries, transactions, and ACID compliance.",
+        repoLink: "https://github.com/dhairya22157/Kartify_E-commerce-Website",
+        image: IMAGE_PLACEHOLDER_URL + "Online+Store",
+        demoLink: null,
+    },
+    {
+        title: "Artificial Machine Simulator (C)",
+        main: "A system simulator built in C for a Computer Organization course, translating user commands to machine code and using an inbuilt assembler for user-readable output.",
+        repoLink: "https://github.com/dhairya22157/Assembler-and-Simulator",
+        image: IMAGE_PLACEHOLDER_URL + "Machine+Simulator",
+        demoLink: null,
+    },
+    {
+        title: "ShellCraft - Linux Shell Simulator",
+        main: "A custom Linux shell developed for an Operating Systems course, designed to execute fundamental Linux commands and provide a foundational understanding of process management.",
+        repoLink: "https://github.com/dhairya22157/ShellCraft",
+        image: IMAGE_PLACEHOLDER_URL + "ShellCraft",
+        demoLink: null,
+    },
+];
+
+// ---------------------------------------------
+// ProjectCard Component (Integrated into this file)
+// ---------------------------------------------
+const ProjectCard = ({ title, main, demoLink, repoLink, image }) => (
+    // Card now has a fixed width for horizontal scrolling
+    <div className="w-80 md:w-96 flex-shrink-0 mx-2 my-4 bg-white shadow-xl rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
+        {/* Image Container */}
+        <div className="h-40 w-full bg-gray-100 overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              src={image}
+              alt={title}
+              // Placeholder fallback in case images fail to load
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x200/cccccc/333333?text=Project+Image"; }}
+            />
+        </div>
+
+        {/* Text Content */}
+        <div className="p-5 flex flex-col justify-between min-h-[12rem]">
+            <div>
+                <h3 className="text-2xl font-bold mb-2 text-[#011627]">{title}</h3>
+                {/* 'main' is used as the short summary */}
+                <p className="text-sm text-[#6b7280] mb-4 overflow-hidden text-ellipsis whitespace-normal">
+                    {main}
+                </p>
+            </div>
+
+            {/* Links Section */}
+            <div className="flex justify-start gap-x-6 items-center pt-2 border-t border-gray-100">
+                <a
+                    href={repoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#f07167] font-semibold text-base flex items-center hover:text-[#d96050] transition duration-300"
+                >
+                    View Code →
+                </a>
+                {demoLink && (
+                    <a
+                        href={demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#465697] font-semibold text-base flex items-center hover:text-[#3b4a7e] transition duration-300"
+                    >
+                        Live Demo →
+                    </a>
+                )}
+            </div>
+        </div>
+    </div>
+);
+// ---------------------------------------------
 
 const Projects = () => {
   return (
-    <div id="Projects" className="p-10 md:p-24 bg-[#f5f5dc] text-black">
-      <h1 className="text-2xl md:text-4xl font-bold text-center mb-10">Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <ProjectCard
-          title="Song popularit/HitTrack"
-          main="In this project, I leveraged data collected from the Spotify Web API to predict the popularity of songs based on key features. After obtaining the raw data, I performed extensive preprocessing and feature selection to identify the most relevant parameters influencing song popularity. Using these optimized features, I trained machine learning models to classify whether a song is likely to be popular after its release. The final model achieved an impressive overall accuracy of 78%. The tech stack for this project includes Machine Learning algorithms and concepts, the Spotify Web API for data collection, and various preprocessing and model training techniques to develop an effective predictive system. Developed a machine learning model to predict song popularity using features like danceability, energy, and sentiment analysis of song titles from Spotify's API. Conducted extensive EDA, applied Random Forest, XGBoost, and other models, achieving 78% accuracy"
-          repoLink="https://github.com/dhairya22157/Song_Popularity"
-          image={songImage}
-        />
-        <ProjectCard
-          title="Movie recommender System"
-          main="I developed a Movie Recommender System utilizing Machine Learning principles to suggest personalized movie recommendations to users. The project leverages the TMDB API to fetch high-quality images of the recommended movies, enhancing the user experience. Key features of the project include: Machine Learning Model: Built a robust recommendation engine trained on movie datasets to provide accurate suggestions. Web Deployment: Deployed the system using Flask, ensuring a seamless and interactive user interface accessible via this link.https://movie-recommender8aae.onrender.com Integration with TMDB API: Integrated the TMDB API to dynamically fetch and display movie posters, creating a visually appealing output. This project demonstrates my ability to combine Data Science and web development to build practical and user-friendly applications. It highlights my expertise in deploying ML models and integrating APIs for real world use cases"
-          demoLink="https://movie-recommender-8aae.onrender.com/"
-          repoLink="https://github.com/dhairya22157/movie-recommender"
-          image={movieImage}
-        />
-        <ProjectCard
-          title="Stick Hero game"
-          main="In this project, I developed a single-player game using Java, JavaFX, and Object-Oriented Programming (OOP) principles. The game features a tap-to-play mechanic, enhanced by a custom built 2D physics engine for smooth and realistic gameplay. Key aspects of the project include: Leveraging JavaFX to design an intuitive and user-friendly graphical interface, ensuring an engaging gaming experience. Implementing design patterns to create a resilient and maintainable architecture. Utilizing multithreading to manage concurrent processes for seamless performance. Applying OOP principles to ensure modularity, scalability, and clean code structure. This project highlights the integration of core Java concepts and advanced UI/UX design to deliver a dynamic and interactive gaming application."
-          repoLink="https://github.com/dhairya22157/Javafx-game"
-          image={stickHeroImage}
-        />
-        <ProjectCard
-          title="Online Store"
-          main="In this project, I developed a feature-rich e-commerce website by integrating database management principles with a robust backend and frontend framework. The system was designed and implemented using a MySQL-based DBMS, with Python as the primary programming language, alongside React for the frontend and Django for the backend. Key highlights of the project include: Designing and implementing a well-structured schema to handle complex data relationships. Incorporating advanced DBMS features such as OLAP queries, triggers, transactions, and a focus on maintaining integrity constraints and adherence to ACID principles. Developing core functionalities such as product ordering, store management, and inventory control. Creating over 50 database queries and populating a comprehensive dummy database to simulate real-world operations."
-          repoLink="https://github.com/dhairya22157/Kartify_E-commerce-Website"
-          image={onlineStoreImage}
-        />
-        <ProjectCard
-          title="Artificial Machine simulator"
-          main="For a course project on Computer Organization, I developed a simulator using C and compilers, focusing on the fundamental operations of computer systems. The simulator, designed to run on a Linux distribution command line, bridges the gap between user commands and machine-level instructions. Key features of the project include: A simulator that translates user commands into machine code, enabling the computer system to process and execute the instructions effectively. An inbuilt assembler that converts the system's machine-level response back into a user-readable output, ensuring clear communication between the system and the user. This project showcases expertise in systems programming, compiler design, and low-level architecture, with a strong emphasis on practical applications in computer organization."
-          repoLink="https://github.com/dhairya22157/Assembler-and-Simulator"
-          image={machineSimulatorImage}
-        />
-        <ProjectCard
-          title="ShellCraft - Linux Command Shell Simulator"
-          main="As part of the Operating Systems course, I developed a custom Linux shell designed to execute fundamental and basic Linux commands. This project aimed to provide a foundational understanding of shell operations and command-line interfaces. Key features of the project include: Implementation of a custom shell that mimics the behavior of a standard Linux shell, allowing users to execute basic commands seamlessly. Creation of a beginner-friendly environment to help users familiarize themselves with essential command-line operations. Support for core Linux commands, making the shell functional and practical for learning and exploration. This project highlights foundational concepts of operating systems, process management, and user interaction within a command-line interface."
-          repoLink="https://github.com/dhairya22157/ShellCraft"
-          image={shellCraftImage}
-        />
+    <div id="Projects" className="p-10 md:p-24 bg-[#fef6e4] text-[#011627]">
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#f07167]">
+        Featured Projects
+      </h1>
+      
+      {/* Horizontal Scrolling Container */}
+      {/* This is the container that enables the left-to-right scrolling */}
+      <div className="flex overflow-x-scroll pb-10 hide-scrollbar scroll-smooth">
+        {projectData.map((project, index) => (
+          <ProjectCard
+            key={index}
+            title={project.title}
+            main={project.main} // This is now the short summary
+            demoLink={project.demoLink}
+            repoLink={project.repoLink}
+            image={project.image}
+          />
+        ))}
       </div>
+
+      {/* Custom CSS for hiding scrollbar - ensures a cleaner look */}
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
     </div>
   );
 };
