@@ -1,53 +1,86 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RiCloseLine, RiMenu2Line } from "@remixicon/react";
-const Navbar = () => {
-  const [menu, openMenu] = useState(false);
-  const [showMenu, setShowmenu] = useState(true);
-  return (
-    <nav className="flex flex-wrap justify-between md:items-center text-black px-25 pt-6 md:px-20" style={{ backgroundColor: "#f5f5dc" }}>
-      <span className="text-xl font-bold tracking-wide">Portfolio</span>
+import { motion, AnimatePresence } from "framer-motion";
 
-      <ul
-        className={`${
-          menu ? "block" : "hidden"
-        }     mx-24 p-y2 mt-4 font-semibold md:mt-5 bg-black px-2 rounded-xl bg-opacity-30 md:border-none text-center md:bg-transparent md:static md:mx-0 md:flex gap-6`}
-      >
-        <a href="#About">
-          <li className="text-md transition-all duration-300 p-1 md:p-0">
-            About
-          </li>
-        </a>
-        <a href="#Experience">
-          <li className="text-md transition-all duration-300 p-1 md:p-0">
-            Experience
-          </li>
-        </a>
-        <a href="#Projects">
-          <li className="text-md transition-all duration-300 p-1 md:p-0">
-            Projects
-          </li>
-        </a>
-        <a href="#Footer">
-          <li className="text-md transition-all duration-300 p-1 md:p-0">
-            Contact
-          </li>
-        </a>
+const Navbar = () => {
+  const [menu, setMenu] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect for glassmorphism
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "#About", label: "About" },
+    { href: "#Experience", label: "Experience" },
+    { href: "#Projects", label: "Projects" },
+    { href: "#Footer", label: "Contact" },
+  ];
+
+  return (
+    <nav
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-bg-light/80 backdrop-blur-md shadow-sm py-4"
+          : "bg-transparent py-6"
+      } px-6 md:px-20 flex justify-between items-center text-text-primary`}
+    >
+      <span className="text-2xl font-bold tracking-wide text-accent">
+        Portfolio
+      </span>
+
+      {/* Desktop Menu */}
+      <ul className="hidden md:flex gap-8 font-medium">
+        {navLinks.map((link) => (
+          <a key={link.label} href={link.href}>
+            <li className="hover:text-accent transition-colors duration-300 cursor-pointer">
+              {link.label}
+            </li>
+          </a>
+        ))}
       </ul>
-      {showMenu ? (
-        <RiMenu2Line
-          size={30}
-          className="md:hidden absolute right-10 top-6 transition-all duration-300"
-          onClick={() => {
-            openMenu(!menu);
-            setShowmenu(!showMenu);
-          }}
-        />
-      ) : (
-        <RiCloseLine
-          size={30}
-          className="md:hidden absolute right-10 top-6 transition-all duration-300"
-        />
-      )}
+
+      {/* Mobile Menu Icon */}
+      <div className="md:hidden z-50" onClick={() => setMenu(!menu)}>
+        {menu ? (
+          <RiCloseLine size={30} className="text-text-primary" />
+        ) : (
+          <RiMenu2Line size={30} className="text-text-primary" />
+        )}
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {menu && (
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-bg-light/95 backdrop-blur-lg flex flex-col items-center justify-center gap-8 md:hidden z-40"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenu(false)}
+                className="text-2xl font-semibold hover:text-accent transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
