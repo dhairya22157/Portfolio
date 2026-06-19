@@ -5,12 +5,14 @@ import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
 import ContactForm from "./components/ContactForm/ContactForm";
+import Skills from "./components/Skills/Skills";
 
 function App() {
   return (
     <div className="bg-bg-light h-auto w-full overflow-hidden text-text-primary">
       <Navbar />
       <Home />
+      <Skills />
       <About />
       <ContactForm /> {/* Add this line */}
       <Experience />

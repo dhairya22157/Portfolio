@@ -1,5 +1,4 @@
 import React from "react";
-import bannerImg from "../../assets/photo-C8q0KQHG.webp";
 import { motion } from "framer-motion";
 import { RiGithubLine, RiExternalLinkLine } from "@remixicon/react";
 
@@ -9,6 +8,22 @@ const IMAGE_PLACEHOLDER_URL = "https://placehold.co/600x400/fef6e4/f07167?text="
 
 const Projects = () => {
   const projectData = [
+    {
+        title: "Spotify Music Recommender System",
+        description: "Built a hybrid music recommendation system using collaborative and content-based filtering on 50K+ songs and 9.7M user interactions for real-time personalized recommendations.",
+        image: IMAGE_PLACEHOLDER_URL + "Spotify+Recommender",
+        tags: ["ML", "Python", "Streamlit", "Docker"],
+        codeLink: "#",
+        demoLink: null
+    },
+    {
+        title: "Smart Waste Segregation Vision System",
+        description: "Developed a real-time computer vision system for waste classification using transfer learning models like MobileNetV2 and EfficientNet-B0, achieving 87% validation accuracy.",
+        image: IMAGE_PLACEHOLDER_URL + "Waste+Vision",
+        tags: ["Computer Vision", "PyTorch", "OpenCV", "CNN"],
+        codeLink: "#",
+        demoLink: null
+    },
     {
         title: "Song Popularity Predictor",
         description: "Developed a machine learning model to predict song popularity using features from Spotify's API, achieving 78% classification accuracy.",
@@ -109,6 +124,7 @@ const ProjectCard = ({ project, index }) => {
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -10 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="bg-bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 group flex flex-col h-full"

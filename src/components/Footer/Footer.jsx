@@ -40,7 +40,7 @@ const Footer = () => {
           <MdOutlineEmail size={28} />
         </a>
       </div>
-      <p className="text-text-secondary text-sm md:text-base">© 2024 Dhairya. All rights reserved.</p>
+      <p className="text-text-secondary text-sm md:text-base">© 2026 Dhairya. All rights reserved.</p>
     </div>
   );
 };
