@@ -10,8 +10,6 @@
 .chatbot-message p { margin: 0; }
 .chatbot-message.assistant { align-self: flex-start; color: #172033; background: white; border: 1px solid rgba(15, 23, 42, .08); }
 .chatbot-message.user { align-self: flex-end; color: white; background: #f07167; }
-.chatbot-sources { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .55rem; }
-.chatbot-sources span { padding: .15rem .38rem; border-radius: 999px; background: #fff0ed; color: #b3453d; font-size: .68rem; }
 .chatbot-typing span { display: inline-block; animation: chatbot-dot 1.2s infinite; }.chatbot-typing span:nth-child(2) { animation-delay: .15s; }.chatbot-typing span:nth-child(3) { animation-delay: .3s; }
 .chatbot-form { display: flex; gap: .5rem; padding: .75rem; border-top: 1px solid rgba(15, 23, 42, .08); background: white; }
 .chatbot-form input { min-width: 0; flex: 1; padding: .65rem .75rem; border: 1px solid #d5d9e1; border-radius: .65rem; color: #0f172a; outline: none; font-size: .85rem; }.chatbot-form input:focus { border-color: #f07167; box-shadow: 0 0 0 3px rgba(240, 113, 103, .16); }

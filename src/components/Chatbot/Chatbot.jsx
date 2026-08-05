@@ -8,7 +8,6 @@ const API_BASE_URL =
 const welcomeMessage = {
   role: "assistant",
   text: "Hi! I’m Dhairya’s portfolio assistant. Ask me about projects, skills, experience, or education.",
-  sources: [],
 };
 
 function displayText(text) {
@@ -18,8 +17,7 @@ function displayText(text) {
     .replace(/\*\*(.*?)\*\*/g, "$1")
     .replace(/^\s*[-*]\s+/gm, "• ")
     .replace(/^#{1,6}\s+/gm, "")
-    // Citations remain in the API response to select the right source cards,
-    // but are intentionally not shown inside the conversational answer.
+    // Strip inline citation markers from the conversational answer.
     .replace(/\s*\[Source\s+\d+(?:\s*,\s*Source\s+\d+)*\]/gi, "");
 }
 
@@ -50,7 +48,7 @@ export default function Chatbot() {
     const question = input.trim();
     if (!question || isLoading) return;
 
-    setMessages((current) => [...current, { role: "user", text: question, sources: [] }]);
+    setMessages((current) => [...current, { role: "user", text: question }]);
     setInput("");
     setIsLoading(true);
 
@@ -64,12 +62,12 @@ export default function Chatbot() {
       if (!response.ok) throw new Error(payload.detail || "Unable to answer right now.");
       setMessages((current) => [
         ...current,
-        { role: "assistant", text: payload.answer, sources: payload.sources || [] },
+        { role: "assistant", text: payload.answer },
       ]);
     } catch (error) {
       setMessages((current) => [
         ...current,
-        { role: "assistant", text: error.message || "Unable to reach the portfolio assistant.", sources: [] },
+        { role: "assistant", text: error.message || "Unable to reach the portfolio assistant." },
       ]);
     } finally {
       setIsLoading(false);
@@ -88,13 +86,6 @@ export default function Chatbot() {
             {messages.map((message, index) => (
               <div className={`chatbot-message ${message.role}`} key={`${message.role}-${index}`}>
                 <p>{displayText(message.text)}</p>
-                {message.sources?.length > 0 && (
-                  <div className="chatbot-sources">
-                    {message.sources.slice(0, 3).map((source) => (
-                      <span key={`${index}-${source.number}`}>{source.title}</span>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
             {isLoading && <div className="chatbot-message assistant chatbot-typing">Thinking<span>.</span><span>.</span><span>.</span></div>}
