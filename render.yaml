@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: dhairya-portfolio-api
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        value: portfolio-chatbot
+      - key: PINECONE_NAMESPACE
+        value: portfolio
+      - key: EMBEDDING_DIMENSION
+        value: "3072"
+      - key: GEMINI_GENERATION_MODEL
+        value: gemini-3.6-flash
