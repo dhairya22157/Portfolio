@@ -13,7 +13,7 @@ services:
       - key: PINECONE_API_KEY
         sync: false
       - key: CORS_ORIGINS
-        sync: false
+        value: https://portfolio-kappa-dun-21.vercel.app,http://localhost:5173,http://127.0.0.1:5173
       - key: PINECONE_INDEX_NAME
         value: portfolio-chatbot
       - key: PINECONE_NAMESPACE

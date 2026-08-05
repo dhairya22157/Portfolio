@@ -23,15 +23,33 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 app = FastAPI(title="Dhairya Portfolio Chatbot API", version="1.0.0")
 
-# Set CORS_ORIGINS to your Vercel URL in production. Wildcard is safe here
-# because the API does not authenticate users or accept browser credentials.
-origins = [origin.strip() for origin in os.getenv("CORS_ORIGINS", "*").split(",") if origin.strip()]
+def _parse_cors_origins(value: str | None) -> list[str]:
+    """Return a normalized list of allowed browser origins."""
+    defaults = [
+        "https://portfolio-kappa-dun-21.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
+    if not value or not value.strip():
+        return defaults
+
+    origins = [origin.strip().rstrip("/") for origin in value.split(",") if origin.strip()]
+    if not origins:
+        return defaults
+    if "*" in origins:
+        return ["*"]
+
+    # Always keep the production and local dev defaults even when CORS_ORIGINS is set.
+    return list(dict.fromkeys(origins + defaults))
+
+
+origins = _parse_cors_origins(os.getenv("CORS_ORIGINS"))
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
