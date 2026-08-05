@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Projects from "./components/Projects/Projects";
 import ContactForm from "./components/ContactForm/ContactForm";
 import Skills from "./components/Skills/Skills";
+import Chatbot from "./components/Chatbot/Chatbot";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Projects />
       
       <Footer />
+      <Chatbot />
     </div>
   );
 }

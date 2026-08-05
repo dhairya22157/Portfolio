@@ -17,7 +17,8 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-KNOWLEDGE_BASE_DIR = PROJECT_ROOT / "knowledge_base"
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+KNOWLEDGE_BASE_DIR = BACKEND_DIR / "knowledge_base"
 OUTPUT_PATH = Path(__file__).resolve().parent / "data" / "portfolio_chunks.jsonl"
 
 CHUNK_SIZE = 900
@@ -56,7 +57,9 @@ def load_documents(source_dir: Path = KNOWLEDGE_BASE_DIR) -> list[Document]:
             Document(
                 page_content=content,
                 metadata={
-                    "source": path.relative_to(PROJECT_ROOT).as_posix(),
+                    # Keep logical source paths stable after moving the folder
+                    # into backend/, so Pinecone upserts reuse the same IDs.
+                    "source": path.relative_to(BACKEND_DIR).as_posix(),
                     "filename": path.name,
                     "title": title_match.group(1).strip() if title_match else path.stem,
                 },
