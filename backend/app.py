@@ -1,7 +1,7 @@
-"""FastAPI server for the portfolio RAG chatbot.
+r"""FastAPI server for the portfolio RAG chatbot.
 
 Start from the project root:
-    venv\Scripts\python.exe -m uvicorn backend.app:app --reload
+    venv/Scripts/python.exe -m uvicorn backend.app:app --reload
 """
 
 from __future__ import annotations
@@ -13,8 +13,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from .RAG.embeddings import PROJECT_ROOT
-from .RAG.full_pipeline import answer_question
+# Render starts this file as the top-level `app` module because its Root
+# Directory is `backend`, so these imports must not use a leading dot.
+from RAG.embeddings import PROJECT_ROOT
+from RAG.full_pipeline import answer_question
 
 
 load_dotenv(PROJECT_ROOT / ".env")
