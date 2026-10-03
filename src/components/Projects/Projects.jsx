@@ -9,6 +9,14 @@ const IMAGE_PLACEHOLDER_URL = "https://placehold.co/600x400/fef6e4/f07167?text="
 const Projects = () => {
   const projectData = [
     {
+        title: "Enterprise HR AI Copilot — Agentic RAG Platform",
+        description: "Architected a 9-node LangGraph Agentic RAG workflow with intent routing, dual-source evidence grading, query rewriting, and grounded synthesis with citations—reducing hallucinations via multi-stage verification. Built a secure Admin Portal and real-time document ingestion pipeline.",
+        image: IMAGE_PLACEHOLDER_URL + "Agentic+HR+Copilot",
+        tags: ["LangGraph", "FastAPI", "Pinecone", "Tavily", "Hugging Face", "Docker", "Render"],
+        codeLink: "https://github.com/dhairya22157/agentic-rag-hr-copilot",
+        demoLink: null
+    },
+    {
         title: "Spotify Music Recommender System",
         description: "Built a hybrid music recommendation system using collaborative and content-based filtering on 50K+ songs and 9.7M user interactions for real-time personalized recommendations.",
         image: IMAGE_PLACEHOLDER_URL + "Spotify+Recommender",
@@ -167,7 +175,7 @@ const ProjectCard = ({ project, index }) => {
         <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">
           {project.title}
         </h3>
-        <p className="text-text-secondary text-sm mb-4 leading-relaxed flex-grow line-clamp-3">
+        <p className="text-text-secondary text-sm mb-4 leading-relaxed flex-grow line-clamp-4">
           {project.description}
         </p>
         

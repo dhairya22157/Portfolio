@@ -6,18 +6,14 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      role: "Developer",
-      organization: "IIIT-Delhi",
-      guide: "Prof. Vikram Goyal",
-      dates: "Aug 2024 - May 2025",
+      role: "Deep Learning Intern",
+      organization: "WiseDO",
+      dates: "Jul 2026 - Present",
+      techStack: ["Python", "PyTorch", "Transformers", "CV", "VLM"],
       points: [
-        "Developed and launched an academic content-sharing platform on AWS EC2, providing students with high-quality, organized course materials.",
-        "Managed the end-to-end deployment lifecycle, including AWS EC2 server configuration, domain setup, and production maintenance.",
-        "Engineered personalized student dashboards and dedicated peer discussion spaces to foster an interactive learning environment.",
-        "Achieved integration with an EdTech startup's product, Unsaid Talks, expanding reach to a broader student audience.",
+        "Developing an end-to-end CV pipeline (RF-DETR, ByteTrack, ROI analytics, action recognition) for retail behavior understanding.",
+        "Evaluating Vision-Language Models for industrial SOP understanding and action recognition.",
       ],
-      website: "http://43.205.173.25/",
-      startup_landing_page: "https://unsaidtalks.com/",
       icon: <FaLaptopCode size={30} className="text-white" />,
     },
     {
@@ -31,6 +27,22 @@ const Experience = () => {
         "Designed and implemented novel algorithms for defining and categorizing 'Nova Categories' within the dataset.",
         "Developed and trained a machine learning model for recipe recommendation based on the analyzed network structure.",
       ],
+      icon: <FaLaptopCode size={30} className="text-white" />,
+    },
+    {
+      id: 3,
+      role: "Developer",
+      organization: "IIIT-Delhi",
+      guide: "Prof. Vikram Goyal",
+      dates: "Aug 2024 - May 2025",
+      points: [
+        "Developed and launched an academic content-sharing platform on AWS EC2, providing students with high-quality, organized course materials.",
+        "Managed the end-to-end deployment lifecycle, including AWS EC2 server configuration, domain setup, and production maintenance.",
+        "Engineered personalized student dashboards and dedicated peer discussion spaces to foster an interactive learning environment.",
+        "Achieved integration with an EdTech startup's product, Unsaid Talks, expanding reach to a broader student audience.",
+      ],
+      website: "http://43.205.173.25/",
+      startup_landing_page: "https://unsaidtalks.com/",
       icon: <FaLaptopCode size={30} className="text-white" />,
     },
   ];
@@ -93,6 +105,19 @@ const Experience = () => {
                     </li>
                 ))}
               </ul>
+
+              {exp.techStack && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {exp.techStack.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-semibold bg-accent/10 text-accent px-2.5 py-0.5 rounded-full border border-accent/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-4 mt-4">
                 {exp.website && (
