@@ -36,13 +36,13 @@ const Experience = () => {
   ];
 
   return (
-    <div id="Experience" className="p-10 md:p-24 bg-bg-light text-text-primary">
+    <div id="Experience" className="py-16 md:py-24 px-6 sm:px-8 md:px-16 lg:px-20 bg-bg-light text-text-primary">
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-3xl md:text-5xl font-bold text-center mb-16"
+        className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-16"
       >
         Work <span className="text-accent">Experience</span>
       </motion.h1>

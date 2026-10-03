@@ -56,7 +56,7 @@ const Skills = () => {
   return (
     <section
       id="Skills"
-      className="bg-bg-light px-6 py-16 text-text-primary md:px-20 md:py-24"
+      className="bg-bg-light px-6 sm:px-8 md:px-16 lg:px-20 py-16 md:py-24 text-text-primary"
     >
       <div className="mx-auto max-w-7xl">
         <motion.h2
@@ -64,9 +64,9 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-10 text-3xl font-bold md:text-5xl"
+          className="mb-12 md:mb-16 text-3xl font-bold md:text-5xl text-center"
         >
-          <span className="text-accent">Skills</span>
+          Technical <span className="text-accent">Skills</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-2 xl:grid-cols-4">
