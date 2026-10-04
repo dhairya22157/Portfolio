@@ -59,7 +59,7 @@ const Skills = () => {
   return (
     <section
       id="Skills"
-      className="bg-bg-light px-6 sm:px-8 md:px-16 lg:px-20 py-16 md:py-24 text-text-primary"
+      className="scroll-mt-24 md:scroll-mt-28 bg-bg-light px-6 sm:px-8 md:px-16 lg:px-20 py-16 md:py-24 text-text-primary"
     >
       <div className="mx-auto max-w-7xl">
         <motion.h2
@@ -72,7 +72,7 @@ const Skills = () => {
           Technical <span className="text-accent">Skills</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-4">
           {skillGroups.map((group, groupIndex) => (
             <motion.article
               key={group.title}
@@ -81,7 +81,7 @@ const Skills = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: groupIndex * 0.12 }}
               whileHover={{ y: -5 }}
-              className="rounded-xl border border-slate-200 bg-bg-white p-6 shadow-sm transition-all duration-300 hover:border-accent/50 hover:shadow-lg md:p-8"
+              className="rounded-xl border border-slate-200 bg-bg-white p-6 shadow-sm transition-all duration-300 hover:border-accent/50 hover:shadow-lg md:p-8 flex flex-col h-full"
             >
               <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-accent">
                 {group.title}

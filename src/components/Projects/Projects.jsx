@@ -107,7 +107,7 @@ const Projects = () => {
   ];
 
   return (
-    <div id="Projects" className="py-16 md:py-24 px-6 sm:px-8 md:px-16 lg:px-20 bg-bg-light text-text-primary">
+    <div id="Projects" className="scroll-mt-24 md:scroll-mt-28 py-16 md:py-24 px-6 sm:px-8 md:px-16 lg:px-20 bg-bg-light text-text-primary">
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -130,41 +130,41 @@ const Projects = () => {
 const ProjectCard = ({ project, index }) => {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -8 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-100 group flex flex-col h-full"
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="bg-bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200/70 group flex flex-col h-full"
     >
       {/* Image Container */}
-      <div className="relative overflow-hidden h-48">
+      <div className="relative overflow-hidden h-48 bg-slate-100">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+        <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           {project.demoLink && (
             <a 
                 href={project.demoLink} 
-                target="_blank"
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-white rounded-full text-text-primary hover:text-accent transition-colors shadow-lg"
+                className="p-2.5 bg-white rounded-full text-text-primary hover:text-accent hover:scale-110 transition-all shadow-lg"
                 title="Live Demo"
             >
-                <RiExternalLinkLine size={24} />
+                <RiExternalLinkLine size={20} />
             </a>
           )}
-          {project.codeLink && (
+          {project.codeLink && project.codeLink !== "#" && (
             <a 
                 href={project.codeLink} 
-                target="_blank"
+                target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2 bg-white rounded-full text-text-primary hover:text-accent transition-colors shadow-lg"
+                className="p-2.5 bg-white rounded-full text-text-primary hover:text-accent hover:scale-110 transition-all shadow-lg"
                 title="View Code"
             >
-                <RiGithubLine size={24} />
+                <RiGithubLine size={20} />
             </a>
           )}
         </div>
@@ -172,19 +172,46 @@ const ProjectCard = ({ project, index }) => {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold mb-2 text-text-primary group-hover:text-accent transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-text-secondary text-sm mb-4 leading-relaxed flex-grow line-clamp-4">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors leading-snug">
+            {project.title}
+          </h3>
+          <div className="flex items-center gap-1 shrink-0 pt-0.5">
+            {project.demoLink && (
+              <a
+                href={project.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-text-secondary hover:text-accent hover:bg-slate-100 transition-colors"
+                title="Live Demo"
+              >
+                <RiExternalLinkLine size={18} />
+              </a>
+            )}
+            {project.codeLink && project.codeLink !== "#" && (
+              <a
+                href={project.codeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1.5 rounded-lg text-text-secondary hover:text-accent hover:bg-slate-100 transition-colors"
+                title="View Code"
+              >
+                <RiGithubLine size={18} />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <p className="text-text-secondary text-sm mb-5 leading-relaxed flex-grow line-clamp-4">
           {project.description}
         </p>
         
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-slate-100">
           {project.tags.map((tag, i) => (
             <span 
               key={i} 
-              className="px-3 py-1 text-xs font-medium bg-bg-light text-text-secondary rounded-full border border-slate-200"
+              className="px-2.5 py-1 text-xs font-semibold bg-bg-light text-slate-700 rounded-md border border-slate-200/80"
             >
               {tag}
             </span>

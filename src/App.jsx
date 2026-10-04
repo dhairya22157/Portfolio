@@ -12,8 +12,8 @@ function App() {
     <div className="bg-bg-light h-auto w-full overflow-hidden text-text-primary">
       <Navbar />
       <Home />
-      <Skills />
       <About />
+      <Skills />
       <Experience />
       <Projects />
       <Footer />

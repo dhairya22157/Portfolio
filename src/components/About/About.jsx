@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div id="About" className="py-16 md:py-24 px-6 sm:px-8 md:px-16 lg:px-20">
+    <div id="About" className="scroll-mt-24 md:scroll-mt-28 py-16 md:py-24 px-6 sm:px-8 md:px-16 lg:px-20">
       <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -12,7 +12,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <h2 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-950">
             About <span className="text-accent">Me</span>
           </h2>
           <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-accent/60"></div>

@@ -139,7 +139,7 @@ const Home = () => {
             <img
               src={ProfileImg}
               alt="Dhairya - AI/ML Engineer"
-              className="h-[340px] w-[380px] rounded-[22px] border border-white/60 object-cover shadow-2xl shadow-slate-900/10 sm:h-[400px] sm:w-[320px] lg:h-[440px] lg:w-[340px]"
+              className="w-[280px] h-[340px] sm:w-[320px] sm:h-[400px] lg:w-[340px] lg:h-[440px] rounded-[22px] border border-white/60 object-cover shadow-2xl shadow-slate-900/10"
             />
           </motion.div>
         </motion.div>

@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer
       id="Footer"
-      className="bg-bg-light text-text-primary px-6 sm:px-8 md:px-16 lg:px-20 py-16 md:py-24 border-t border-slate-200/80"
+      className="scroll-mt-24 md:scroll-mt-28 bg-bg-light text-text-primary px-6 sm:px-8 md:px-16 lg:px-20 py-16 md:py-24 border-t border-slate-200/80"
     >
       <div className="mx-auto max-w-4xl text-center">
         {/* Contact Heading */}
