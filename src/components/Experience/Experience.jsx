@@ -8,7 +8,7 @@ const Experience = () => {
       id: 1,
       role: "Deep Learning Intern",
       organization: "WiseDO",
-      dates: "Jul 2026 - Present",
+      dates: "Jul 2026 - Sep 2026",
       techStack: ["Python", "PyTorch", "Transformers", "CV", "VLM"],
       points: [
         "Developing an end-to-end CV pipeline (RF-DETR, ByteTrack, ROI analytics, action recognition) for retail behavior understanding.",
@@ -21,7 +21,7 @@ const Experience = () => {
       role: "Research Intern",
       organization: "CoSy Lab, IIIT-Delhi",
       guide: "Prof. Ganesh Bagler",
-      dates: "Aug 2025 - Present",
+      dates: "Aug 2025 - May 2026",
       points: [
         "Conducted extensive Exploratory Data Analysis (EDA) on a large-scale N-Recipe network to uncover underlying patterns in culinary data.",
         "Designed and implemented novel algorithms for defining and categorizing 'Nova Categories' within the dataset.",

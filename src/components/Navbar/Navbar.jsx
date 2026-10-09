@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { RiCloseLine, RiMenu2Line } from "@remixicon/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Handle scroll effect for glassmorphism
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinks = [
     { href: "#About", label: "About" },
@@ -29,16 +15,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-50 w-full px-5 text-text-primary transition-all duration-300 md:px-10 lg:px-20 ${
-        scrolled ? "py-3" : "py-5"
-      }`}
+      className="absolute left-0 top-0 z-50 w-full px-5 py-5 text-text-primary md:px-10 lg:px-20"
     >
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-2xl px-4 transition-all duration-300 md:px-5 ${
-          scrolled
-            ? "border border-white/70 bg-white/75 py-3 shadow-lg shadow-slate-900/5 backdrop-blur-xl"
-            : "border border-transparent bg-transparent py-2"
-        }`}
+        className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl border border-white/70 bg-white/75 px-4 py-3 shadow-lg shadow-slate-900/5 backdrop-blur-xl transition-all duration-300 md:px-5"
       >
       <span className="text-xl font-black tracking-tight text-slate-950">
         Dhairya<span className="text-accent">.</span>

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiGithub, FiDownload } from "react-icons/fi";
+import { FiGithub } from "react-icons/fi";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import ProfileImg from "../../assets/photoo.png";
 
@@ -80,24 +80,21 @@ const Home = () => {
             </button>
 
             <a
-              href="https://drive.google.com/file/d/1ah8I9gOSi9fnbQ3hwR3ohcf3EWmKnDJ-/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-7 py-3.5 text-sm font-semibold text-text-primary shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent hover:shadow-lg"
-            >
-              <FiDownload className="text-base" />
-              Download Resume
-            </a>
-
-            <a
               href="https://github.com/dhairya22157"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-xl px-4 py-3.5 text-sm font-semibold text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
+              className="group inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 text-sm font-semibold text-text-primary shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent hover:shadow-lg"
             >
               <FiGithub className="text-lg" />
               GitHub
             </a>
+
+            <button
+              onClick={() => scrollToSection("Footer")}
+              className="group inline-flex items-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold text-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:text-accent"
+            >
+              Get In Touch
+            </button>
           </motion.div>
 
           {/* Tech chips */}

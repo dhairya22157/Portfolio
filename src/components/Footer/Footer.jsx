@@ -21,7 +21,7 @@ const Footer = () => {
             Get In <span className="text-accent">Touch</span>
           </h2>
           <p className="mt-4 text-base md:text-lg text-text-secondary max-w-xl mx-auto leading-relaxed">
-            I'm currently looking for new opportunities and always open to discussing new projects, AI research, or tech ideas.
+            I'm always open to discussing new projects, AI research, or tech ideas, if you have some ideas to work i am happy to look into it.
           </p>
         </motion.div>
 
@@ -84,7 +84,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-16 pt-8 border-t border-slate-200/60">
           <p className="text-text-secondary text-xs md:text-sm">
-            &copy; {new Date().getFullYear()} Dhairya. Built with React &amp; Tailwind CSS.
+            &copy; {new Date().getFullYear()} Dhairya.
           </p>
         </div>
       </div>
